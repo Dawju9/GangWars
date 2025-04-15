@@ -4,47 +4,133 @@ title: Miastox
 desc: Page Miastox found
 url: /index.html
 ---
+<!DOCTYPE html>
+<html lang="pl">
 <head>
-<link rel="stylesheet" href="styles/main.css">
-<title>MiastoX</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gang Wars | FiveM Server</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
-<div id="About">
-	<h1>Witaj w Mansion Survival: Dimensions of the Infinite!</h1>
-	<p>Dołącz do niesamowitej przygody, w której musisz przetrwać w nieznanym świecie pełnym niebezpieczeństw i tajemnic.</p>
-	<button class="button" href="https://www.roblox.com/pl/games/11633610328/MiastoX-Updated-24th">Zagraj teraz!</button>
-	<div class="site">
-		<div class="sector">
-			<section class="readme-section">
-				<code> **Zjazd po gierze** 
-			```hack --**Poziomy** > **Mroczny świat cybernetycznych wyzwań — modularyzacja na wyższym poziomie.**  
-			>>## 📜 **Opis Projektu** 
-			>>## 🔍 **Kluczowe Postacie**  
-			>>## 🖥️ **Główne Mechaniki9** 
-			>>## 🏗️ **Struktura Lokacji** 
-			>>## 🌐 **Potencjalne Usprawnienia** 
-			>>## 💡 **Wpływ na Głowę** 
-			>>## 📝 **Uwagi** 
-			>  **Rozklejone buty, pomidor, tak**  
-			--**Credits** 
-			>>## 🖥️ - **GitHub**: [Whitekali](https://github.com/Dawju9) 
-			>>## 🏗️ **Struktura Projektu** 
-			>>## 🌐 - **E-mail**: whitekali@example.com 
-			>>## 💡 - **Autor**: Whitekali 
-			>>## 📝 **Uwagi** 
-			> **Tylko gwiazdy znają nasze sekrety, żaden ziemski sąd nie jest wystarczający..**  
-			```</code>
-			</section>
-		</div>
-	</div>
-</div>
-	<div>
-	<h1>Witaj w mojej grze Roblox!</h1>
-	<p>To jest strona repozytorium mojej gry. Możesz znaleźć więcej informacji na temat projektu poniżej:</p>
-	<ul>
-		<li><a href="https://github.com/dawju9/MiastoX" target="_blank">Repozytorium GitHub</a></li>
-		<li><a href="https://www.roblox.com/pl/games/11633610328/MiastoX-Updated-17th" target="_blank">Zagraj w grę!</a></li>
-	</ul>
-	</div>
-	<footer>
-		<p>&copy; 2023 Moja Gra Roblox. Wszelkie prawa zastrzeżone.</p>
-	</footer>
+<body>
+    <div class="container">
+        <!-- Navigation -->
+        <nav>
+            <div class="logo">
+                <img src="assets/logo.png" alt="Gang Wars Logo">
+            </div>
+            <ul class="nav-links">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#features">Features</a></li>
+                <li><a href="#rules">Rules</a></li>
+                <li><a href="#discord">Discord</a></li>
+                <li><a href="#store">Store</a></li>
+            </ul>
+        </nav>
+
+        <!-- Hero Section -->
+        <header class="hero">
+            <h1>Welcome to Gang Wars</h1>
+            <p>Join the ultimate FiveM roleplay experience</p>
+            <div class="server-status">
+                <span class="status-indicator"></span>
+                <span class="player-count">Players: <span id="current">0</span>/<span id="max">64</span></span>
+            </div>
+            <button class="connect-btn">Connect to Server</button>
+        </header>
+
+        <!-- Features Section -->
+        <section id="features">
+            <h2>Server Features</h2>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <i class="fas fa-users"></i>
+                    <h3>Custom Gang System</h3>
+                    <p>Create and manage your own gang</p>
+                </div>
+                <div class="feature-card">
+                    <i class="fas fa-car"></i>
+                    <h3>Custom Vehicles</h3>
+                    <p>Unique vehicles with modifications</p>
+                </div>
+                <div class="feature-card">
+                    <i class="fas fa-map"></i>
+                    <h3>Territory Control</h3>
+                    <p>Fight for control over territories</p>
+                </div>
+                <div class="feature-card">
+                    <i class="fas fa-money-bill"></i>
+                    <h3>Economy System</h3>
+                    <p>Dynamic economy with jobs and trading</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Discord Section -->
+        <section id="discord">
+            <h2>Join Our Community</h2>
+            <iframe src="https://discord.com/widget?id=YOUR_DISCORD_ID" 
+                    width="350" 
+                    height="500" 
+                    allowtransparency="true" 
+                    frameborder="0">
+            </iframe>
+        </section>
+
+        <!-- Rules Section -->
+        <section id="rules">
+            <h2>Server Rules</h2>
+            <div class="rules-container">
+                <div class="rule">
+                    <h3>1. Respect All Players</h3>
+                    <p>Treat everyone with respect, no harassment or discrimination</p>
+                </div>
+                <div class="rule">
+                    <h3>2. No Cheating</h3>
+                    <p>Use of mods, cheats or exploits is strictly prohibited</p>
+                </div>
+                <div class="rule">
+                    <h3>3. RDM/VDM</h3>
+                    <p>Random Death Match and Vehicle Death Match are not allowed</p>
+                </div>
+                <div class="rule">
+                    <h3>4. Roleplay Quality</h3>
+                    <p>Maintain realistic and quality roleplay at all times</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Store Section -->
+        <section id="store">
+            <h2>Support the Server</h2>
+            <div class="store-items">
+                <div class="store-item">
+                    <h3>VIP Package</h3>
+                    <p>Get exclusive benefits and perks</p>
+                    <button class="buy-btn">Purchase</button>
+                </div>
+                <div class="store-item">
+                    <h3>Custom Cars</h3>
+                    <p>Unlock special vehicles</p>
+                    <button class="buy-btn">Purchase</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer>
+            <div class="footer-content">
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-discord"></i></a>
+                    <a href="#"><i class="fab fa-youtube"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                </div>
+                <p>&copy; 2025 Gang Wars. All rights reserved.</p>
+            </div>
+        </footer>
+    </div>
+
+    <script src="js/main.js"></script>
+</body>
+</html>
