@@ -1,6 +1,197 @@
 template gangwars green dragon site
 ****
 
+```markdown
+# 🎮 Green Dragon - FiveM Server Package
+
+## Overview
+Complete FiveM server package for Green Dragon Roleplay server, featuring custom scripts, resources, and configurations for an immersive gaming experience.
+
+## 📋 Prerequisites
+- FiveM server artifacts
+- MySQL database
+- Node.js
+- Windows/Linux OS
+- Minimum 8GB RAM
+- 100GB SSD storage
+
+## 🚀 Installation
+
+```bash
+# Clone repository
+git clone https://github.com/yourusername/green-dragon.git
+
+# Navigate to server directory
+cd green-dragon
+
+# Install dependencies
+npm install
+
+# Configure database
+mysql -u root -p < database/schema.sql
+
+# Start server
+bash start.sh
+```
+
+## 📁 Directory Structure
+```
+green-dragon/
+├── resources/
+│   ├── [core]/
+│   ├── [gameplay]/
+│   ├── [admin]/
+│   ├── [vehicles]/
+│   └── [maps]/
+├── config/
+│   ├── server.cfg
+│   ├── permissions.cfg
+│   └── database.cfg
+├── database/
+│   └── schema.sql
+└── cache/
+```
+
+## 🛠 Core Features
+
+### Base Systems
+- Custom character creation
+- Advanced inventory system
+- Banking & economy
+- Job system
+- Property management
+- Vehicle ownership
+- Phone system
+- Radio communications
+
+### Gameplay Mechanics
+- Custom vehicle handling
+- Advanced criminal activities
+- Police and emergency services
+- Territory control
+- Business management
+- Skills progression
+- Weather synchronization
+
+### Admin Tools
+- Staff management panel
+- Player monitoring
+- Anti-cheat integration
+- Report system
+- Server management tools
+- Resource monitoring
+
+## ⚙️ Configuration
+
+### Server Configuration
+```cfg
+# server.cfg example
+endpoint_add_tcp "0.0.0.0:30120"
+endpoint_add_udp "0.0.0.0:30120"
+sv_maxclients 128
+set steam_webApiKey "YOUR_STEAM_API_KEY"
+```
+
+### Database Setup
+```sql
+-- Example database configuration
+CREATE DATABASE greendragon;
+USE greendragon;
+-- Additional setup in database/schema.sql
+```
+
+## 🔧 Customization
+- Custom loading screen (`resources/[core]/loading-screen/`)
+- Server logo (`resources/[core]/loading-screen/images/`)
+- Vehicle configurations (`resources/[vehicles]/vehicle-config/`)
+- Map modifications (`resources/[maps]/`)
+
+## 📚 Documentation
+Detailed documentation available in `docs/` directory:
+- Installation guide
+- Configuration manual
+- Resource documentation
+- Troubleshooting guide
+- API documentation
+
+## 🔒 Security Features
+- Anti-cheat system
+- DDoS protection
+- SQL injection prevention
+- Resource validation
+- Secure authentication
+
+## 🔄 Updates & Maintenance
+- Regular security updates
+- Performance optimizations
+- Bug fixes
+- New feature implementations
+- Database maintenance
+
+## 💻 Development
+```bash
+# Development environment setup
+npm run dev
+
+# Build resources
+npm run build
+
+# Run tests
+npm test
+```
+
+## 🐛 Troubleshooting
+Common issues and solutions available in `docs/troubleshooting.md`
+
+## 📝 License
+This project is licensed under the MIT License - see LICENSE file for details.
+
+## 👥 Credits
+- Development Team
+- Resource Contributors
+- Community Support
+
+## 🤝 Contributing
+1. Fork repository
+2. Create feature branch
+3. Commit changes
+4. Push to branch
+5. Create pull request
+
+## 📞 Support
+- Discord: discord.gg/greendragon
+- Email: support@greendragon.com
+- GitHub Issues
+
+## ⚠️ Requirements
+- FiveM server license
+- Valid Steam API key
+- Minimum hardware specifications
+- Required port forwarding (30120 TCP/UDP)
+
+## 🌟 Acknowledgments
+- FiveM community
+- Resource creators
+- Beta testers
+- Community contributors
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
