@@ -68,6 +68,8 @@ url: /dashboard.html
     </tbody>
   </table>
   <script>
+    const jebaneip = "198.244.231.52";
+
     async function loadPlayers() {
       try {
         const res = await fetch(`http://${jebaneip}:30322/players.json`, {
