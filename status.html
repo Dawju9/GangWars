@@ -86,13 +86,18 @@ url: /status.html
         </nav>
     <script>
         const updateOnlineStatus = async () => {
-            const response = await fetch('http://198.244.231.52:30322/players.json');
+            const response = await fetch(`http://${server_settings['ip']}:${server_settings['port']}/players.json`);
             const data = await response.json();
             const onlineStatusElement = document.getElementById('online-status');
-            onlineStatusElement.textContent = `Online Players: ${data.length}`;
+            onlineStatusElement.innerHTML = '<center>';
+            data.forEach(player => {
+                onlineStatusElement.innerHTML += `<a class="btn bg-gradient-dark w-90" href="">Gracz ${player.name} o id: ${player.id}</a><br>`;
+            });
+            onlineStatusElement.innerHTML += '</center>';
         };
         updateOnlineStatus();
         setInterval(updateOnlineStatus, 10000);
+    </script>
     </script>
 
     <div id="online-status"></div>
