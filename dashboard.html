@@ -72,7 +72,7 @@ url: /dashboard.html
   <script>
     async function loadPlayers() {
       try {
-        const res = await fetch('http://198.244.231.52:30322/players.json', {
+        const res = await fetch('http://<?php echo $jebaneip; ?>:30322/players.json', {
           headers: {
             'Access-Control-Allow-Origin': '*',
           },
@@ -119,3 +119,4 @@ url: /dashboard.html
 </body>
 
 </html>
+
