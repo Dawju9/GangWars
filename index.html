@@ -43,6 +43,99 @@ url: /index.html
             </div>
             <button href="https://cfx.re/join/ovjmoj" class="connect-btn">Rozpocznij grę</button>
         </header>
+<!-- Licznik graczy online -->
+<div class="player-counter">
+  <div class="counter-box">
+    <span id="player-count">0</span>/64
+    <span class="counter-label">Graczy Online</span>
+  </div>
+</div>
+
+<!-- Statystyki serwera -->
+<div class="server-stats">
+  <div class="stat-box">
+    <span id="total-players">0</span>
+    <span class="stat-label">Zarejestrowanych graczy</span>
+  </div>
+  <div class="stat-box">
+    <span id="online-time">0</span>
+    <span class="stat-label">Godzin online</span>
+  </div>
+</div>
+
+<!-- Discord Embed -->
+<iframe src="https://discord.com/widget?id=YOUR_SERVER_ID&theme=dark" 
+        width="350" 
+        height="500" 
+        allowtransparency="true" 
+        frameborder="0"
+        sandbox="allow-popups allow-popups-to-escape-sandbox allow-same-origin allow-scripts">
+</iframe>
+
+<style>
+.player-counter {
+  background: rgba(0,0,0,0.8);
+  padding: 1rem;
+  border-radius: 8px;
+  margin: 1rem 0;
+}
+
+.counter-box {
+  font-size: 2rem;
+  color: #fff;
+  text-align: center;
+}
+
+.counter-label {
+  display: block;
+  font-size: 1rem;
+  color: #aaa;
+}
+
+.server-stats {
+  display: flex;
+  gap: 1rem;
+  margin: 2rem 0;
+}
+
+.stat-box {
+  flex: 1;
+  background: rgba(0,0,0,0.8);
+  padding: 1rem;
+  border-radius: 8px;
+  text-align: center;
+}
+
+.stat-box span {
+  display: block;
+  color: #fff;
+}
+
+.stat-box .stat-label {
+  color: #aaa;
+  font-size: 0.9rem;
+  margin-top: 0.5rem;
+}
+
+/* Animacje hover */
+.stat-box:hover, .player-counter:hover {
+  transform: translateY(-2px);
+  transition: transform 0.2s;
+}
+</style>
+
+<script>
+// Aktualizacja liczby graczy
+function updatePlayerCount() {
+  fetch('YOUR_FIVEM_SERVER_API')
+    .then(response => response.json())
+    .then(data => {
+      document.getElementById('player-count').textContent = data.players;
+    });
+}
+
+setInterval(updatePlayerCount, 30000); // Aktualizuj co 30 sekund
+</script>
 
         <!-- Features Section -->
         <section id="funkcje">
