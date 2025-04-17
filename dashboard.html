@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+  <meta charset="UTF-8">
+  <title>Status Graczy</title>
+  <style>
+    body {
+      font-family: sans-serif;
+      background: #121212;
+      color: #eee;
+      padding: 20px;
+    }
+    h1 {
+      color: #00ffcc;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      background: #1e1e1e;
+      border-radius: 8px;
+      overflow: hidden;
+      margin-top: 10px;
+    }
+    th, td {
+      padding: 10px;
+      border-bottom: 1px solid #333;
+    }
+    tr:hover {
+      background: #222;
+    }
+  </style>
+</head>
+<body>
+  <h1>📡 Online Gracze na Wyspie</h1>
+  <div id="player-count">Ładowanie...</div>
+  <table>
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Nazwa</th>
+        <th>Ping</th>
+      </tr>
+    </thead>
+    <tbody id="player-list">
+      <!-- wypełniane dynamicznie -->
+    </tbody>
+  </table>
+
+  <script>
+    async function loadPlayers() {
+      try {
+        const res = await fetch('http://198.244.231.52:30322/players.json');
+        const players = await res.json();
+
+        const list = document.getElementById("player-list");
+        const counter = document.getElementById("player-count");
+
+        list.innerHTML = '';
+        players.forEach(player => {
+          const tr = document.createElement("tr");
+          tr.innerHTML = `
+            <td>${player.id}</td>
+            <td>${player.name}</td>
+            <td>${player.ping} ms</td>
+          `;
+          list.appendChild(tr);
+        });
+
+        counter.textContent = `👥 Obecnie online: ${players.length}`;
+      } catch (e) {
+        console.error("Błąd ładowania danych:", e);
+        document.getElementById("player-count").textContent = "❌ Nie można połączyć z serwerem.";
+      }
+    }
+
+    loadPlayers();
+    setInterval(loadPlayers, 5000);
+  </script>
+</body>
+</html>
