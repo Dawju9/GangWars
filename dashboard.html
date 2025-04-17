@@ -6,6 +6,7 @@ url: /dashboard.html
 ---
 <!DOCTYPE html>
 <html lang="pl">
+
 <head>
   <meta charset="UTF-8">
   <title>Status Graczy</title>
@@ -16,9 +17,11 @@ url: /dashboard.html
       color: #eee;
       padding: 20px;
     }
+
     h1 {
       color: #00ffcc;
     }
+
     table {
       width: 100%;
       border-collapse: collapse;
@@ -27,18 +30,31 @@ url: /dashboard.html
       overflow: hidden;
       margin-top: 10px;
     }
-    th, td {
+
+    th,
+    td {
       padding: 10px;
       border-bottom: 1px solid #333;
     }
+
     tr:hover {
       background: #222;
     }
+
+    #debug-output {
+      background: #1e1e1e;
+      padding: 10px;
+      margin: 10px 0;
+      border-radius: 4px;
+      white-space: pre-wrap;
+    }
   </style>
 </head>
+
 <body>
   <h1>📡 Online Gracze na Wyspie</h1>
   <div id="player-count">Ładowanie...</div>
+  <div id="debug-output">Waiting for data...</div>
   <table>
     <thead>
       <tr>
@@ -51,13 +67,16 @@ url: /dashboard.html
       <!-- wypełniane dynamicznie -->
     </tbody>
   </table>
-<?php include 'id.php'; ?>
+  <?php include 'id.php'; ?>
 
   <script>
     async function loadPlayers() {
       try {
         const res = await fetch('http://198.244.231.52:30322/players.json');
         const players = await res.json();
+
+        // Debug output
+        document.getElementById('debug-output').textContent = 'Response data:\n' + JSON.stringify(players, null, 2);
 
         const list = document.getElementById("player-list");
         const counter = document.getElementById("player-count");
@@ -86,6 +105,7 @@ url: /dashboard.html
       } catch (e) {
         console.error("Błąd ładowania danych:", e);
         document.getElementById("player-count").textContent = "❌ Nie można połączyć z serwerem.";
+        document.getElementById("debug-output").textContent = 'Error:\n' + e.toString();
       }
     }
 
@@ -93,46 +113,51 @@ url: /dashboard.html
     setInterval(loadPlayers, 5000);
   </script>
 </body>
+
 </html>
-    <script>
-      const server_settings = {
-        title: "Green Dragon",
-        ip: "198.244.231.52",
-        port: "30322",
-      };
+<script>
+  const server_settings = {
+    title: "Green Dragon",
+    ip: "198.244.231.52",
+    port: "30322",
+  };
 
-      async function loadPlayers() {
-        try {
-          const res = await fetch(`http://${server_settings.ip}:${server_settings.port}/players.json`);
-          const players = await res.json();
+  async function loadPlayers() {
+    try {
+      const res = await fetch(`http://${server_settings.ip}:${server_settings.port}/players.json`);
+      const players = await res.json();
 
-          const list = document.getElementById("player-list");
+      // Debug output
+      document.getElementById('debug-output').textContent = 'Response data:\n' + JSON.stringify(players, null, 2);
 
-          list.innerHTML = '';
+      const list = document.getElementById("player-list");
 
-          if (players.length === 0) {
-            list.innerHTML = `
+      list.innerHTML = '';
+
+      if (players.length === 0) {
+        list.innerHTML = `
               <tr>
                 <td colspan="3" style="text-align:center;">No players online</td>
               </tr>
             `;
-          } else {
-            players.forEach(player => {
-              const tr = document.createElement("tr");
-              tr.innerHTML = `
+      } else {
+        players.forEach(player => {
+          const tr = document.createElement("tr");
+          tr.innerHTML = `
                 <td>${player.id}</td>
                 <td>${decodeURIComponent(player.name)}</td>
                 <td>${player.ping} ms</td>
               `;
-              list.appendChild(tr);
-            });
-          }
-        } catch (e) {
-          console.error("Błąd ładowania danych:", e);
-          document.getElementById("player-count").textContent = "❌ Nie można połączyć z serwerem.";
-        }
+          list.appendChild(tr);
+        });
       }
+    } catch (e) {
+      console.error("Błąd ładowania danych:", e);
+      document.getElementById("player-count").textContent = "❌ Nie można połączyć z serwerem.";
+      document.getElementById("debug-output").textContent = 'Error:\n' + e.toString();
+    }
+  }
 
-      loadPlayers();
-      setInterval(loadPlayers, 5000);
-    </script>
+  loadPlayers();
+  setInterval(loadPlayers, 5000);
+</script>
