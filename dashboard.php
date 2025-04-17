@@ -51,6 +51,7 @@ url: /dashboard.html
       <!-- wypełniane dynamicznie -->
     </tbody>
   </table>
+<?php include 'id.php'; ?>
 
   <script>
     async function loadPlayers() {
