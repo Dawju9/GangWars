@@ -62,15 +62,24 @@ url: /dashboard.html
         const counter = document.getElementById("player-count");
 
         list.innerHTML = '';
-        players.forEach(player => {
-          const tr = document.createElement("tr");
-          tr.innerHTML = `
-            <td>${player.id}</td>
-            <td>${player.name}</td>
-            <td>${player.ping} ms</td>
+
+        if (players.length === 0) {
+          list.innerHTML = `
+            <tr>
+              <td colspan="3" style="text-align:center;">No players online</td>
+            </tr>
           `;
-          list.appendChild(tr);
-        });
+        } else {
+          players.forEach(player => {
+            const tr = document.createElement("tr");
+            tr.innerHTML = `
+              <td>${player.id}</td>
+              <td>${decodeURIComponent(player.name)}</td>
+              <td>${player.ping} ms</td>
+            `;
+            list.appendChild(tr);
+          });
+        }
 
         counter.textContent = `👥 Obecnie online: ${players.length}`;
       } catch (e) {
@@ -84,3 +93,4 @@ url: /dashboard.html
   </script>
 </body>
 </html>
+
