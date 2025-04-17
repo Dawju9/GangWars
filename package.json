@@ -1,13 +1,14 @@
 {
-    "name": "gangwars",
-    "version": "1.0.0",
-    "scripts": {
-      "build": "next build",
-      "start": "next start"
-    },
-    "dependencies": {
-      "next": "latest",
-      "react": "latest",
-      "react-dom": "latest"
-    }
+  "name": "LovelyDev829-github-page",
+  "version": "1.0.0",
+  "homepage": "https://LovelyDev829.github.io",
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "export": "next export",
+    "start": "next start",
+    "deploy": "gh-pages -d out --dotfiles"
+  },
+  "dependencies": {
   }
+}
