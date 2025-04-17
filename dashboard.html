@@ -72,7 +72,11 @@ url: /dashboard.html
   <script>
     async function loadPlayers() {
       try {
-        const res = await fetch('http://198.244.231.52:30322/players.json');
+        const res = await fetch('http://198.244.231.52:30322/players.json', {
+          headers: {
+            'Access-Control-Allow-Origin': '*',
+          },
+        });
         const players = await res.json();
 
         // Debug output
@@ -115,49 +119,3 @@ url: /dashboard.html
 </body>
 
 </html>
-<script>
-  const server_settings = {
-    title: "Green Dragon",
-    ip: "198.244.231.52",
-    port: "30322",
-  };
-
-  async function loadPlayers() {
-    try {
-      const res = await fetch(`http://${server_settings.ip}:${server_settings.port}/players.json`);
-      const players = await res.json();
-
-      // Debug output
-      document.getElementById('debug-output').textContent = 'Response data:\n' + JSON.stringify(players, null, 2);
-
-      const list = document.getElementById("player-list");
-
-      list.innerHTML = '';
-
-      if (players.length === 0) {
-        list.innerHTML = `
-              <tr>
-                <td colspan="3" style="text-align:center;">No players online</td>
-              </tr>
-            `;
-      } else {
-        players.forEach(player => {
-          const tr = document.createElement("tr");
-          tr.innerHTML = `
-                <td>${player.id}</td>
-                <td>${decodeURIComponent(player.name)}</td>
-                <td>${player.ping} ms</td>
-              `;
-          list.appendChild(tr);
-        });
-      }
-    } catch (e) {
-      console.error("Błąd ładowania danych:", e);
-      document.getElementById("player-count").textContent = "❌ Nie można połączyć z serwerem.";
-      document.getElementById("debug-output").textContent = 'Error:\n' + e.toString();
-    }
-  }
-
-  loadPlayers();
-  setInterval(loadPlayers, 5000);
-</script>
