@@ -1,0 +1,123 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Green Dragon FiveM Server</title>
+    <style>
+        body {
+            background-color: #1a1a1a;
+            color: #ffffff;
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        header {
+            background-color: #2d572c;
+            padding: 20px 0;
+            text-align: center;
+        }
+        .logo {
+            max-width: 200px;
+        }
+        nav {
+            background-color: #1f3d1e;
+            padding: 10px 0;
+        }
+        nav ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            text-align: center;
+        }
+        nav ul li {
+            display: inline-block;
+            margin: 0 15px;
+        }
+        nav ul li a {
+            color: #ffffff;
+            text-decoration: none;
+            font-size: 18px;
+        }
+        .main-content {
+            padding: 40px 0;
+        }
+        .server-info {
+            background-color: #2d572c;
+            border-radius: 10px;
+            padding: 20px;
+            margin-bottom: 20px;
+        }
+        footer {
+            background-color: #1f3d1e;
+            text-align: center;
+            padding: 20px 0;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <img src="logo.png" alt="Green Dragon Logo" class="logo">
+        <h1>Green Dragon FiveM Server</h1>
+    </header>
+
+    <nav>
+        <ul>
+            <li><a href="#home">Home</a></li>
+            <li><a href="#rules">Rules</a></li>
+            <li><a href="#features">Features</a></li>
+            <li><a href="#discord">Discord</a></li>
+            <li><a href="#connect">Connect</a></li>
+        </ul>
+        </nav>
+    <script>
+        const updateOnlineStatus = async () => {
+            const response = await fetch('http://198.244.231.52:30322/players.json');
+            const data = await response.json();
+            const onlineStatusElement = document.getElementById('online-status');
+            onlineStatusElement.textContent = `Online Players: ${data.length}`;
+        };
+        updateOnlineStatus();
+        setInterval(updateOnlineStatus, 10000);
+    </script>
+
+    <div id="online-status"></div>
+
+
+
+    <div class="container">
+        <div class="main-content">
+            <div class="server-info">
+                <h2>Welcome to Green Dragon RP</h2>
+                <p>Join our immersive FiveM roleplay community!</p>
+                <p>Server IP: connect ovjmoj</p>
+            </div>
+
+            <div class="server-info">
+                <h2>Server Features</h2>
+                <ul>
+                    <li>Custom Scripts</li>
+                    <li>Active Staff Team</li>
+                    <li>Friendly Community</li>
+                    <li>Regular Events</li>
+                    <li>Custom Cars and Maps</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <p>© 2024 Green Dragon RP. All rights reserved.</p>
+    </footer>
+</body>
+</html>
+
