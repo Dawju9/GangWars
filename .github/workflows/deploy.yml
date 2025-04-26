@@ -25,10 +25,28 @@ concurrency:
   cancel-in-progress: false
 
 jobs:
+
   # Build job
   build:
     runs-on: ubuntu-latest
     steps:
+        - name: Detect package manager
+          id: detect-package-manager
+          run: |
+            if [ -f "${{ github.workspace }}/yarn.lock" ]; then
+              echo "manager=yarn" >> $GITHUB_OUTPUT
+              echo "command=install" >> $GITHUB_OUTPUT
+              echo "runner=yarn" >> $GITHUB_OUTPUT
+              exit 0
+            elif [ -f "${{ github.workspace }}/package-lock.json" ]; then
+              echo "manager=npm" >> $GITHUB_OUTPUT
+              echo "command=ci" >> $GITHUB_OUTPUT
+              echo "runner=npx --no-install" >> $GITHUB_OUTPUT
+              exit 0
+            else
+              echo "No lock file found. Please add a package-lock.json or yarn.lock file."
+              exit 1
+            fi
       - name: Checkout
         uses: actions/checkout@v4
 
